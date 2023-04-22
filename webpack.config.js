@@ -7,7 +7,7 @@ module.exports = (env = {}) => {
 	const isAlipay = !isWechat;
 
   return {
-    mode: 'production',
+    mode: 'none',
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'lib'),

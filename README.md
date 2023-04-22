@@ -57,12 +57,32 @@ Or if you use the native way to write code，I recommend using `git clone`
 $ git clone https://github.com/weapp-socketio/weapp.socket.io
 
 # development mode
-$ npm run build-dev
+$ npm run build-dev:wechat
 
 # production mode
-$ npm run build
+$ npm run build:wechat
+
+# build 
+npm run prepublish
 
 $ cp path/weapp.socket.io/dist/weapp.socket.io.js path/your_weapp_dir
+```
+
+## Using with socket.io v4, e.g. v4.6.1
+
+Use v4.1.3 of socket.io-client. But the javascript will have error when running in Wechat Devtools, we must change the `mode` to `none` int the `webpack.config.js`. Once the javascript is produced, minify it with [terser](!https://github.com/terser/terser), we cannot use `-m` as it will produce error. 
+
+```
+terser weapp.socket.io.wx.js -p bare_returns -c -o weapp.socket.io.js
+```
+
+
+Note: I have tried many compressor, only this one is working fine.
+
+```json
+  "dependencies": {
+    "socket.io-client": "4.1.3"
+  },
 ```
 
 ## Usage

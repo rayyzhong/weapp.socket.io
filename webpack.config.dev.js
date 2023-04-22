@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+
 module.exports = (env = {}) => {
   const target = env.target || 'Wechat';
 	const isWechat = target !== 'Alipay';
